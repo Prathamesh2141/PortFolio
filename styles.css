@@ -81,7 +81,7 @@ nav {
     position: absolute;
     width: 100%;
     height: 2px;
-    background-color: #ffc2b3; /* Orange Color */
+    background-color: #f3e4e1; /* Orange Color */
     bottom: 0;
     left: 0;
     transform: scaleX(0);
@@ -97,7 +97,7 @@ nav {
 /* Continuous animation for hover effect */
 .nav-links a:hover,
 .nav-links a:hover .logo img {
-    color: #ff2d2d; /* Red Color on Hover */
+    color: #ffdede; /* Red Color on Hover */
     animation: continuousAnimation 1s infinite alternate; /* Add continuous animation */
 }
 
@@ -112,7 +112,7 @@ nav {
 
 /* Background transition on hover */
 .nav-links a:hover {
-    background-color: #f8d8d6; /* Slightly darker color on hover */
+    background-color: #ff9696; /* Slightly darker color on hover */
 }
 
 /* Border-bottom animation for selected link */
