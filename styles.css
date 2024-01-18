@@ -97,7 +97,7 @@ nav {
 /* Continuous animation for hover effect */
 .nav-links a:hover,
 .nav-links a:hover .logo img {
-    color: #ffc5c5; /* Red Color on Hover */
+    color: #ff2d2d; /* Red Color on Hover */
     animation: continuousAnimation 1s infinite alternate; /* Add continuous animation */
 }
 
