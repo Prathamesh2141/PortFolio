@@ -1,40 +1,38 @@
-body {
+* {
     margin: 0;
     padding: 0;
-    font-family: 'Arial', sans-serif;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
-header {
-    background-color: #f9ecd5; /* Dark Blueish Background */
-    color: #ffffff; /* White Text */
-    padding: 10px 15px; /* Decreased padding */
-    box-shadow: 0 2px 5px rgba(237, 237, 234, 0.1); /* Subtle shadow effect */
-    position: sticky;
+body {
+    color: #ededed;
+}
+
+.header {
+    position: fixed;
     top: 0;
-    z-index: 1000; /* Ensure the header is above other elements */
-}
-
-nav {
+    left: 0;
+    width: 100%;
+    padding: 20px 10px;
+    background: transparent;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    z-index: 100;
 }
 
 .logo {
-    font-size: 1.5em;
-    display: flex;
-    align-items: center;
-    /* Add animation to the logo */
-    animation: fadeInUp 1s ease-out, changeColor 0.5s ease-out forwards;
+    position: relative;
+    font-size: 25px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    opacity: 0;
+    animation: fadeInLogo 1s ease-out forwards, bounceLogo 2s infinite;
 }
 
-.logo img {
-    width: 290px; /* Adjust the width as needed */
-    height: 50px; /* Adjust the height as needed */
-    margin-right: 10px; /* Add some space between logo and text */
-}
-
-@keyframes fadeInUp {
+@keyframes fadeInLogo {
     from {
         opacity: 0;
         transform: translateY(20px);
@@ -45,78 +43,131 @@ nav {
     }
 }
 
-@keyframes changeColor {
-    from {
-        color: #f33838; /* White Text */
+@keyframes bounceLogo {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
     }
-    to {
-        color: #ff8041; /* Off-white Color */
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
     }
 }
 
-.nav-links {
-    list-style: none;
-    display: flex;
-    margin: 0; /* Remove default margin */
-}
-
-.nav-links li {
-    margin-right: 15px; /* Decreased margin between nav elements */
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: #ffffff; /* White Text */
-    font-weight: bold;
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
     padding: 10px;
-    border-radius: 5px;
-    background-color: #ffc096; /* Dark Grayish Blue */
-    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Add transitions for background and text color changes */
-    position: relative;
 }
 
-/* Add animation for hover effect on navigation icons */
-.nav-links a:hover::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background-color: #f3e4e1; /* Orange Color */
-    bottom: 0;
-    left: 0;
-    transform: scaleX(0);
-    transform-origin: bottom right;
-    transition: transform 0.3s ease-in-out;
+.menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px 0;
+    transition: 0.3s;
 }
 
-.nav-links a:hover::before {
-    transform-origin: bottom left;
-    transform: scaleX(1);
+.navbar {
+    display: flex;
 }
 
-/* Continuous animation for hover effect */
-.nav-links a:hover,
-.nav-links a:hover .logo img {
-    color: #ffdede; /* Red Color on Hover */
-    animation: continuousAnimation 1s infinite alternate; /* Add continuous animation */
+.navbar a {
+    display: inline-block;
+    font-size: 25px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 35px;
+    opacity: 0;
+    animation: slideUpNavbar 0.8s ease-out forwards;
 }
 
-@keyframes continuousAnimation {
+@keyframes slideUpNavbar {
     from {
-        transform: scale(1);
+        opacity: 0;
+        transform: translateY(20px);
     }
     to {
-        transform: scale(1.1);
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
-/* Background transition on hover */
-.nav-links a:hover {
-    background-color: #ff9696; /* Slightly darker color on hover */
+.navbar a:hover {
+    color: rgb(249, 196, 115);
 }
 
-/* Border-bottom animation for selected link */
-.nav-links a.active {
-    border-bottom: 2px solid #f0c0c0; /* Red border for the selected link */
-    transition: border-bottom 0.3s ease-in-out; /* Add transition for border-bottom */
+.home {
+    position: relative;
+    width: 100%;
+    justify-content: space-between;
+    height: 100vh;
+    background: url('nice.png') no-repeat;
+    background-position: center;
+    display: flex;
+    background-size: cover;
+    background-position: flex;
+    align-items: center;
+    padding: 70px 10px 0;
+    opacity: 0;
+    animation: fadeInHome 1s ease-out forwards;
+}
+
+@keyframes fadeInHome {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.home-content {
+    text-align: center;
+    color: #fff;
+    padding-left: 160px;
+}
+
+.home-content h1 {
+    font-size: 2.5em;
+}
+
+.home-content p {
+    font-size: 1.2em;
+    margin-top: 20px;
+}
+
+/* Media Query for Small Screens (Mobile) */
+@media screen and (max-width: 768px) {
+    .navbar {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: #333; /* Adjust background color as needed */
+        text-align: center;
+    }
+
+    .navbar.show {
+        display: flex;
+    }
+
+    .navbar a {
+        margin: 10px 0;
+        opacity: 1;
+        animation: none;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
 }
